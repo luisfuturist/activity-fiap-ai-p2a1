@@ -20,19 +20,19 @@
      - [x] List all relevant entities based on project requirements.
      - [x] Define attributes for each entity.
      - [x] Specify the data type for each attribute (e.g., varchar, double).
-   - [ ] **Determine Cardinalities**:
-     - [ ] Identify the cardinality for each relationship (1:N, N:N).
+   - [x] **Determine Cardinalities**:
+     - [x] Identify the cardinality for each relationship (1:N, N:N).
 
 3. **Develop Data Entity Relationship (DER)**
    - [x] **Create Relationships**:
     - [x] Connect entities based on the defined relationships in the MER.
-   - [ ] **Visualize DER**:
-     - [ ] Use SQLDesigner to create a visual representation of the DER.
+   - [x] **Visualize DER**:
+     - [x] Use a tool to create a visual representation of the DER.
 
 ## Deliverables
 
-- [ ] **GitHub Repository Creation**:
-  - [ ] Set up a GitHub repository for the project.
-  - [ ] Upload the MER and DER files (.xml and .sql).
-  - [ ] Include a `README.md` with documentation explaining the model.
-  - [ ] Add a `.png` image 
+- [x] **GitHub Repository Creation**:
+  - [x] Set up a GitHub repository for the project.
+  - [x] Upload the MER and DER files (.xml and .sql).
+  - [x] Include a `README.md` with documentation explaining the model.
+  - [x] Add a `.png` image 

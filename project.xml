@@ -1,152 +1,336 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- SQL XML created by WWW SQL Designer -->
-<sql>
-    <datatypes db="mysql">
-        <group label="Numeric" color="rgb(238,238,170)">
-            <type label="Integer" length="0" sql="INTEGER" quote="" />
-            <type label="TINYINT" length="0" sql="TINYINT" quote="" />
-            <type label="SMALLINT" length="0" sql="SMALLINT" quote="" />
-            <type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote="" />
-            <type label="INT" length="0" sql="INT" quote="" />
-            <type label="BIGINT" length="0" sql="BIGINT" quote="" />
-            <type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote="" />
-            <type label="Single precision" length="0" sql="FLOAT" quote="" />
-            <type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote="" />
-        </group>
-        <group label="Character" color="rgb(255,200,200)">
-            <type label="Char" length="1" sql="CHAR" quote="'" />
-            <type label="Varchar" length="1" sql="VARCHAR" quote="'" />
-            <type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'" />
-            <type label="Binary" length="1" sql="BINARY" quote="'" />
-            <type label="Varbinary" length="1" sql="VARBINARY" quote="'" />
-            <type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'" />
-        </group>
-        <group label="Date &amp; Time" color="rgb(200,255,200)">
-            <type label="Date" length="0" sql="DATE" quote="'" />
-            <type label="Time" length="0" sql="TIME" quote="'" />
-            <type label="Datetime" length="0" sql="DATETIME" quote="'" />
-            <type label="Year" length="0" sql="YEAR" quote="" />
-            <type label="Timestamp" length="0" sql="TIMESTAMP" quote="'" />
-        </group>
-        <group label="Miscellaneous" color="rgb(200,200,255)">
-            <type label="ENUM" length="1" sql="ENUM" quote="" />
-            <type label="SET" length="1" sql="SET" quote="" />
-            <type label="Bit" length="0" sql="bit" quote="" />
-        </group>
-    </datatypes>
-
-    <!-- Tabela Produtor -->
-    <table x="587" y="448.1818084716797" name="Produtor">
-        <row name="id_produtor" null="0" autoincrement="1">
-            <datatype>INT</datatype>
-        </row>
-        <row name="nome" null="0" autoincrement="0">
-            <datatype>VARCHAR(100)</datatype>
-        </row>
-        <row name="localizacao" null="0" autoincrement="0">
-            <datatype>VARCHAR(255)</datatype>
-        </row>
-        <row name="data_registro" null="0" autoincrement="0">
-            <datatype>DATE</datatype>
-        </row>
-        <key type="PRIMARY" name="">
-            <part>id_produtor</part>
-        </key>
-    </table>
-
-    <!-- Tabela Cultura -->
-    <table x="400" y="300" name="Cultura">
-        <row name="id_cultura" null="0" autoincrement="1">
-            <datatype>INT</datatype>
-        </row>
-        <row name="nome" null="0" autoincrement="0">
-            <datatype>VARCHAR(100)</datatype>
-        </row>
-        <row name="tipo" null="0" autoincrement="0">
-            <datatype>VARCHAR(100)</datatype>
-        </row>
-        <row name="id_produtor" null="0" autoincrement="0">
-            <datatype>INT</datatype>
-            <relation table="Produtor" row="id_produtor" />
-        </row>
-        <key type="PRIMARY" name="">
-            <part>id_cultura</part>
-        </key>
-        <key type="FOREIGN" name="">
-            <part>id_produtor</part>
-            <references table="Produtor" row="id_produtor" />
-        </key>
-    </table>
-
-    <!-- Tabela Sensor -->
-    <table x="300" y="400" name="Sensor">
-        <row name="id_sensor" null="0" autoincrement="1">
-            <datatype>INT</datatype>
-        </row>
-        <row name="tipo_sensor" null="0" autoincrement="0">
-            <datatype>ENUM('umidade', 'pH', 'nutrientes')</datatype>
-        </row>
-        <row name="id_cultura" null="0" autoincrement="0">
-            <datatype>INT</datatype>
-            <relation table="Cultura" row="id_cultura" />
-        </row>
-        <key type="PRIMARY" name="">
-            <part>id_sensor</part>
-        </key>
-        <key type="FOREIGN" name="">
-            <part>id_cultura</part>
-            <references table="Cultura" row="id_cultura" />
-        </key>
-    </table>
-
-    <!-- Tabela Leitura_Sensor -->
-    <table x="500" y="400" name="Leitura_Sensor">
-        <row name="id_leitura" null="0" autoincrement="1">
-            <datatype>INT</datatype>
-        </row>
-        <row name="id_sensor" null="0" autoincrement="0">
-            <datatype>INT</datatype>
-            <relation table="Sensor" row="id_sensor" />
-        </row>
-        <row name="valor_leitura" null="0" autoincrement="0">
-            <datatype>DOUBLE</datatype>
-        </row>
-        <row name="data_leitura" null="0" autoincrement="0">
-            <datatype>TIMESTAMP</datatype>
-        </row>
-        <key type="PRIMARY" name="">
-            <part>id_leitura</part>
-        </key>
-        <key type="FOREIGN" name="">
-            <part>id_sensor</part>
-            <references table="Sensor" row="id_sensor" />
-        </key>
-    </table>
-
-    <!-- Tabela Ajuste_Aplicacao -->
-    <table x="400" y="500" name="Ajuste_Aplicacao">
-        <row name="id_ajuste" null="0" autoincrement="1">
-            <datatype>INT</datatype>
-        </row>
-        <row name="quantidade_agua" null="0" autoincrement="0">
-            <datatype>DOUBLE</datatype>
-        </row>
-        <row name="quantidade_nutriente" null="0" autoincrement="0">
-            <datatype>DOUBLE</datatype>
-        </row>
-        <row name="data_ajuste" null="0" autoincrement="0">
-            <datatype>TIMESTAMP</datatype>
-        </row>
-        <row name="id_cultura" null="0" autoincrement="0">
-            <datatype>INT</datatype>
-            <relation table="Cultura" row="id_cultura" />
-        </row>
-        <key type="PRIMARY" name="">
-            <part>id_ajuste</part>
-        </key>
-        <key type="FOREIGN" name="">
-            <part>id_cultura</part>
-            <references table="Cultura" row="id_cultura" />
-        </key>
-    </table>
-</sql>
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<tables>
+		<name>Produtor</name>
+		<comment></comment>
+		<color>#175e7a</color>
+		<fields>
+			<name>id_produtor</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>true</increment>
+			<notNull>false</notNull>
+			<primary>true</primary>
+			<default></default>
+			<check></check>
+			<id>0</id>
+		</fields>
+		<fields>
+			<name>nome</name>
+			<type>VARCHAR</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<size>100</size>
+			<check></check>
+			<id>1</id>
+		</fields>
+		<fields>
+			<name>localizacao</name>
+			<type>VARCHAR</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<size>255</size>
+			<check></check>
+			<id>2</id>
+		</fields>
+		<fields>
+			<name>data_registro</name>
+			<type>DATE</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>3</id>
+		</fields>
+		<id>0</id>
+		<x>850.9101530963686</x>
+		<y>148.9944181731846</y>
+	</tables>
+	<tables>
+		<name>Cultura</name>
+		<comment></comment>
+		<color>#175e7a</color>
+		<fields>
+			<name>id_cultura</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>true</increment>
+			<notNull>false</notNull>
+			<primary>true</primary>
+			<default></default>
+			<check></check>
+			<id>0</id>
+		</fields>
+		<fields>
+			<name>nome</name>
+			<type>VARCHAR</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<size>100</size>
+			<check></check>
+			<id>1</id>
+		</fields>
+		<fields>
+			<name>tipo</name>
+			<type>VARCHAR</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<size>100</size>
+			<check></check>
+			<id>2</id>
+		</fields>
+		<fields>
+			<name>id_produtor</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>3</id>
+		</fields>
+		<id>1</id>
+		<x>1364.9782958696785</x>
+		<y>67.4875851037612</y>
+	</tables>
+	<tables>
+		<name>Sensor</name>
+		<comment></comment>
+		<color>#175e7a</color>
+		<fields>
+			<name>id_sensor</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>true</increment>
+			<notNull>false</notNull>
+			<primary>true</primary>
+			<default></default>
+			<check></check>
+			<id>0</id>
+		</fields>
+		<fields>
+			<name>tipo_sensor</name>
+			<type>ENUM</type>
+			<values>umidade</values>
+			<values>pH</values>
+			<values>nutrientes</values>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>1</id>
+		</fields>
+		<fields>
+			<name>id_cultura</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>2</id>
+		</fields>
+		<id>2</id>
+		<x>769.2793558041325</x>
+		<y>-121.91580898100969</y>
+	</tables>
+	<tables>
+		<name>Leitura_Sensor</name>
+		<comment></comment>
+		<color>#175e7a</color>
+		<fields>
+			<name>id_leitura</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>true</increment>
+			<notNull>false</notNull>
+			<primary>true</primary>
+			<default></default>
+			<check></check>
+			<id>0</id>
+		</fields>
+		<fields>
+			<name>id_sensor</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>1</id>
+		</fields>
+		<fields>
+			<name>valor_leitura</name>
+			<type>DOUBLE</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>2</id>
+		</fields>
+		<fields>
+			<name>data_leitura</name>
+			<type>TIMESTAMP</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>false</notNull>
+			<primary>false</primary>
+			<default>CURRENT_TIMESTAMP</default>
+			<check></check>
+			<id>3</id>
+		</fields>
+		<id>3</id>
+		<x>1397.824641812584</x>
+		<y>-186.612626287803</y>
+	</tables>
+	<tables>
+		<name>Ajuste_Aplicacao</name>
+		<comment></comment>
+		<color>#175e7a</color>
+		<fields>
+			<name>id_ajuste</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>true</increment>
+			<notNull>false</notNull>
+			<primary>true</primary>
+			<default></default>
+			<check></check>
+			<id>0</id>
+		</fields>
+		<fields>
+			<name>quantidade_agua</name>
+			<type>DOUBLE</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>1</id>
+		</fields>
+		<fields>
+			<name>quantidade_nutriente</name>
+			<type>DOUBLE</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>2</id>
+		</fields>
+		<fields>
+			<name>data_ajuste</name>
+			<type>TIMESTAMP</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>false</notNull>
+			<primary>false</primary>
+			<default>CURRENT_TIMESTAMP</default>
+			<check></check>
+			<id>3</id>
+		</fields>
+		<fields>
+			<name>id_cultura</name>
+			<type>INT</type>
+			<comment></comment>
+			<unique>false</unique>
+			<increment>false</increment>
+			<notNull>true</notNull>
+			<primary>false</primary>
+			<default></default>
+			<check></check>
+			<id>4</id>
+		</fields>
+		<id>4</id>
+		<x>1935.4943612304476</x>
+		<y>34.42240212500002</y>
+	</tables>
+	<relationships>
+		<name>Cultura_id_produtor_fk</name>
+		<startTableId>1</startTableId>
+		<endTableId>0</endTableId>
+		<endFieldId>0</endFieldId>
+		<startFieldId>3</startFieldId>
+		<updateConstraint>No action</updateConstraint>
+		<deleteConstraint>Cascade</deleteConstraint>
+		<cardinality>many_to_one</cardinality>
+		<id>0</id>
+	</relationships>
+	<relationships>
+		<name>Sensor_id_cultura_fk</name>
+		<startTableId>2</startTableId>
+		<endTableId>1</endTableId>
+		<endFieldId>0</endFieldId>
+		<startFieldId>2</startFieldId>
+		<updateConstraint>No action</updateConstraint>
+		<deleteConstraint>Cascade</deleteConstraint>
+		<cardinality>many_to_one</cardinality>
+		<id>1</id>
+	</relationships>
+	<relationships>
+		<name>Leitura_Sensor_id_sensor_fk</name>
+		<startTableId>3</startTableId>
+		<endTableId>2</endTableId>
+		<endFieldId>0</endFieldId>
+		<startFieldId>1</startFieldId>
+		<updateConstraint>No action</updateConstraint>
+		<deleteConstraint>Cascade</deleteConstraint>
+		<cardinality>many_to_one</cardinality>
+		<id>2</id>
+	</relationships>
+	<relationships>
+		<name>Ajuste_Aplicacao_id_cultura_fk</name>
+		<startTableId>4</startTableId>
+		<endTableId>1</endTableId>
+		<endFieldId>0</endFieldId>
+		<startFieldId>4</startFieldId>
+		<updateConstraint>No action</updateConstraint>
+		<deleteConstraint>Cascade</deleteConstraint>
+		<cardinality>many_to_one</cardinality>
+		<id>3</id>
+	</relationships>
+	<database>generic</database>
+	<title>FarmTech Sensors</title>
+</root>
