@@ -6,19 +6,19 @@
 ## Summary
 
 - [FarmTech Sensors documentation](#farmtech-sensors-documentation)
-  - [Summary](#summary)
-  - [Introduction](#introduction)
-  - [Database type](#database-type)
-  - [Table structure](#table-structure)
-    - [Produtor](#produtor)
-    - [Cultura](#cultura)
-    - [Sensor](#sensor)
-      - [Enums](#enums)
-        - [tipo\_sensor](#tipo_sensor)
-    - [Leitura\_Sensor](#leitura_sensor)
-    - [Ajuste\_Aplicacao](#ajuste_aplicacao)
-  - [Relationships](#relationships)
-  - [Database Diagram](#database-diagram)
+	- [Summary](#summary)
+	- [Introduction](#introduction)
+	- [Database type](#database-type)
+	- [Table structure](#table-structure)
+		- [Producer](#producer)
+		- [Crop](#crop)
+		- [Sensor](#sensor)
+			- [Enums](#enums)
+				- [sensor\_type](#sensor_type)
+		- [Sensor\_Reading](#sensor_reading)
+		- [Application\_Adjustment](#application_adjustment)
+	- [Relationships](#relationships)
+	- [Database Diagram](#database-diagram)
 
 ## Introduction
 
@@ -27,24 +27,24 @@
 - **Database system:** Generic
 ## Table structure
 
-### Produtor
+### Producer
 
 | Name        | Type          | Settings                      | References                    | Note                           |
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
-| **id_produtor** | INT | 🔑 PK, not null , autoincrement |  | |
-| **nome** | VARCHAR(100) | not null  |  | |
-| **localizacao** | VARCHAR(255) | not null  |  | |
-| **data_registro** | DATE | not null  |  | | 
+| **id_producer** | INT | 🔑 PK, not null , autoincrement |  | |
+| **name** | VARCHAR(100) | not null  |  | |
+| **location** | VARCHAR(255) | not null  |  | |
+| **registration_date** | DATE | not null  |  | | 
 
 
-### Cultura
+### Crop
 
 | Name        | Type          | Settings                      | References                    | Note                           |
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
-| **id_cultura** | INT | 🔑 PK, not null , autoincrement |  | |
-| **nome** | VARCHAR(100) | not null  |  | |
-| **tipo** | VARCHAR(100) | not null  |  | |
-| **id_produtor** | INT | not null  | Cultura_id_produtor_fk | | 
+| **id_crop** | INT | 🔑 PK, not null , autoincrement |  | |
+| **name** | VARCHAR(100) | not null  |  | |
+| **type** | VARCHAR(100) | not null  |  | |
+| **id_producer** | INT | not null  | Crop_id_producer_fk | | 
 
 
 ### Sensor
@@ -52,86 +52,86 @@
 | Name        | Type          | Settings                      | References                    | Note                           |
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
 | **id_sensor** | INT | 🔑 PK, not null , autoincrement |  | |
-| **tipo_sensor** | ENUM | not null  |  | |
-| **id_cultura** | INT | not null  | Sensor_id_cultura_fk | | 
+| **sensor_type** | ENUM | not null  |  | |
+| **id_crop** | INT | not null  | Sensor_id_crop_fk | | 
 
 #### Enums
-##### tipo_sensor
+##### sensor_type
 
-- umidade
+- humidity
 - pH
-- nutrientes
+- nutrients
 
 
-### Leitura_Sensor
-
-| Name        | Type          | Settings                      | References                    | Note                           |
-|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
-| **id_leitura** | INT | 🔑 PK, not null , autoincrement |  | |
-| **id_sensor** | INT | not null  | Leitura_Sensor_id_sensor_fk | |
-| **valor_leitura** | DOUBLE | not null  |  | |
-| **data_leitura** | TIMESTAMP | not null , default: CURRENT_TIMESTAMP |  | | 
-
-
-### Ajuste_Aplicacao
+### Sensor_Reading
 
 | Name        | Type          | Settings                      | References                    | Note                           |
 |-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
-| **id_ajuste** | INT | 🔑 PK, not null , autoincrement |  | |
-| **quantidade_agua** | DOUBLE | not null  |  | |
-| **quantidade_nutriente** | DOUBLE | not null  |  | |
-| **data_ajuste** | TIMESTAMP | not null , default: CURRENT_TIMESTAMP |  | |
-| **id_cultura** | INT | not null  | Ajuste_Aplicacao_id_cultura_fk | | 
+| **id_reading** | INT | 🔑 PK, not null , autoincrement |  | |
+| **id_sensor** | INT | not null  | Sensor_Reading_id_sensor_fk | |
+| **reading_value** | DOUBLE | not null  |  | |
+| **reading_date** | TIMESTAMP | not null , default: CURRENT_TIMESTAMP |  | | 
+
+
+### Application_Adjustment
+
+| Name        | Type          | Settings                      | References                    | Note                           |
+|-------------|---------------|-------------------------------|-------------------------------|--------------------------------|
+| **id_adjustment** | INT | 🔑 PK, not null , autoincrement |  | |
+| **water_quantity** | DOUBLE | not null  |  | |
+| **nutrient_quantity** | DOUBLE | not null  |  | |
+| **adjustment_date** | TIMESTAMP | not null , default: CURRENT_TIMESTAMP |  | |
+| **id_crop** | INT | not null  | Application_Adjustment_id_crop_fk | | 
 
 
 ## Relationships
 
-- **Cultura to Produtor**: many_to_one
-- **Sensor to Cultura**: many_to_one
-- **Leitura_Sensor to Sensor**: many_to_one
-- **Ajuste_Aplicacao to Cultura**: many_to_one
+- **Crop to Producer**: many_to_one
+- **Sensor to Crop**: many_to_one
+- **Sensor_Reading to Sensor**: many_to_one
+- **Application_Adjustment to Crop**: many_to_one
 
 ## Database Diagram
 
 ```mermaid
 erDiagram
-    Cultura ||--o{ Produtor : references
-    Sensor ||--o{ Cultura : references
-    Leitura_Sensor ||--o{ Sensor : references
-    Ajuste_Aplicacao ||--o{ Cultura : references
+	Crop ||--o{ Producer : references
+	Sensor ||--o{ Crop : references
+	Sensor_Reading ||--o{ Sensor : references
+	Application_Adjustment ||--o{ Crop : references
 
-    Produtor {
-        INT id_produtor
-        VARCHAR(100) nome
-        VARCHAR(255) localizacao
-        DATE data_registro
-    }
+	Producer {
+		INT id_producer
+		VARCHAR(100) name
+		VARCHAR(255) location
+		DATE registration_date
+	}
 
-    Cultura {
-        INT id_cultura
-        VARCHAR(100) nome
-        VARCHAR(100) tipo
-        INT id_produtor
-    }
+	Crop {
+		INT id_crop
+		VARCHAR(100) name
+		VARCHAR(100) type
+		INT id_producer
+	}
 
-    Sensor {
-        INT id_sensor
-        ENUM tipo_sensor
-        INT id_cultura
-    }
+	Sensor {
+		INT id_sensor
+		ENUM sensor_type
+		INT id_crop
+	}
 
-    Leitura_Sensor {
-        INT id_leitura
-        INT id_sensor
-        DOUBLE valor_leitura
-        TIMESTAMP data_leitura
-    }
+	Sensor_Reading {
+		INT id_reading
+		INT id_sensor
+		DOUBLE reading_value
+		TIMESTAMP reading_date
+	}
 
-    Ajuste_Aplicacao {
-        INT id_ajuste
-        DOUBLE quantidade_agua
-        DOUBLE quantidade_nutriente
-        TIMESTAMP data_ajuste
-        INT id_cultura
-    }
+	Application_Adjustment {
+		INT id_adjustment
+		DOUBLE water_quantity
+		DOUBLE nutrient_quantity
+		TIMESTAMP adjustment_date
+		INT id_crop
+	}
 ```

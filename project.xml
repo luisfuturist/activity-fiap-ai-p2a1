@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 	<tables>
-		<name>Produtor</name>
+		<name>Producer</name>
 		<comment></comment>
 		<color>#175e7a</color>
 		<fields>
-			<name>id_produtor</name>
+			<name>id_producer</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -17,7 +17,7 @@
 			<id>0</id>
 		</fields>
 		<fields>
-			<name>nome</name>
+			<name>name</name>
 			<type>VARCHAR</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -30,7 +30,7 @@
 			<id>1</id>
 		</fields>
 		<fields>
-			<name>localizacao</name>
+			<name>location</name>
 			<type>VARCHAR</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -43,7 +43,7 @@
 			<id>2</id>
 		</fields>
 		<fields>
-			<name>data_registro</name>
+			<name>registration_date</name>
 			<type>DATE</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -55,15 +55,15 @@
 			<id>3</id>
 		</fields>
 		<id>0</id>
-		<x>850.9101530963686</x>
-		<y>148.9944181731846</y>
+		<x>-529.8788729443361</x>
+		<y>627.5800894755862</y>
 	</tables>
 	<tables>
-		<name>Cultura</name>
+		<name>Crop</name>
 		<comment></comment>
 		<color>#175e7a</color>
 		<fields>
-			<name>id_cultura</name>
+			<name>id_crop</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -75,7 +75,7 @@
 			<id>0</id>
 		</fields>
 		<fields>
-			<name>nome</name>
+			<name>name</name>
 			<type>VARCHAR</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -88,7 +88,7 @@
 			<id>1</id>
 		</fields>
 		<fields>
-			<name>tipo</name>
+			<name>type</name>
 			<type>VARCHAR</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -101,7 +101,7 @@
 			<id>2</id>
 		</fields>
 		<fields>
-			<name>id_produtor</name>
+			<name>id_producer</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -113,8 +113,8 @@
 			<id>3</id>
 		</fields>
 		<id>1</id>
-		<x>1364.9782958696785</x>
-		<y>67.4875851037612</y>
+		<x>132.1164355478515</x>
+		<y>666.4787584726564</y>
 	</tables>
 	<tables>
 		<name>Sensor</name>
@@ -133,11 +133,11 @@
 			<id>0</id>
 		</fields>
 		<fields>
-			<name>tipo_sensor</name>
+			<name>sensor_type</name>
 			<type>ENUM</type>
-			<values>umidade</values>
+			<values>humidity</values>
 			<values>pH</values>
-			<values>nutrientes</values>
+			<values>nutrients</values>
 			<comment></comment>
 			<unique>false</unique>
 			<increment>false</increment>
@@ -148,7 +148,7 @@
 			<id>1</id>
 		</fields>
 		<fields>
-			<name>id_cultura</name>
+			<name>id_crop</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -160,15 +160,15 @@
 			<id>2</id>
 		</fields>
 		<id>2</id>
-		<x>769.2793558041325</x>
-		<y>-121.91580898100969</y>
+		<x>506.16268164062507</x>
+		<y>472.3403792968751</y>
 	</tables>
 	<tables>
-		<name>Leitura_Sensor</name>
+		<name>Sensor_Reading</name>
 		<comment></comment>
 		<color>#175e7a</color>
 		<fields>
-			<name>id_leitura</name>
+			<name>id_reading</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -192,7 +192,7 @@
 			<id>1</id>
 		</fields>
 		<fields>
-			<name>valor_leitura</name>
+			<name>reading_value</name>
 			<type>DOUBLE</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -204,7 +204,7 @@
 			<id>2</id>
 		</fields>
 		<fields>
-			<name>data_leitura</name>
+			<name>reading_date</name>
 			<type>TIMESTAMP</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -216,15 +216,15 @@
 			<id>3</id>
 		</fields>
 		<id>3</id>
-		<x>1397.824641812584</x>
-		<y>-186.612626287803</y>
+		<x>170.79973203125002</x>
+		<y>309.71633515625</y>
 	</tables>
 	<tables>
-		<name>Ajuste_Aplicacao</name>
+		<name>Application_Adjustment</name>
 		<comment></comment>
 		<color>#175e7a</color>
 		<fields>
-			<name>id_ajuste</name>
+			<name>id_adjustment</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -236,7 +236,7 @@
 			<id>0</id>
 		</fields>
 		<fields>
-			<name>quantidade_agua</name>
+			<name>water_quantity</name>
 			<type>DOUBLE</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -248,7 +248,7 @@
 			<id>1</id>
 		</fields>
 		<fields>
-			<name>quantidade_nutriente</name>
+			<name>nutrient_quantity</name>
 			<type>DOUBLE</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -260,7 +260,7 @@
 			<id>2</id>
 		</fields>
 		<fields>
-			<name>data_ajuste</name>
+			<name>adjustment_date</name>
 			<type>TIMESTAMP</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -272,7 +272,7 @@
 			<id>3</id>
 		</fields>
 		<fields>
-			<name>id_cultura</name>
+			<name>id_crop</name>
 			<type>INT</type>
 			<comment></comment>
 			<unique>false</unique>
@@ -284,11 +284,11 @@
 			<id>4</id>
 		</fields>
 		<id>4</id>
-		<x>1935.4943612304476</x>
-		<y>34.42240212500002</y>
+		<x>-322.1839905468753</x>
+		<y>261.67231108789076</y>
 	</tables>
 	<relationships>
-		<name>Cultura_id_produtor_fk</name>
+		<name>Crop_id_producer_fk</name>
 		<startTableId>1</startTableId>
 		<endTableId>0</endTableId>
 		<endFieldId>0</endFieldId>
@@ -299,7 +299,7 @@
 		<id>0</id>
 	</relationships>
 	<relationships>
-		<name>Sensor_id_cultura_fk</name>
+		<name>Sensor_id_crop_fk</name>
 		<startTableId>2</startTableId>
 		<endTableId>1</endTableId>
 		<endFieldId>0</endFieldId>
@@ -310,7 +310,7 @@
 		<id>1</id>
 	</relationships>
 	<relationships>
-		<name>Leitura_Sensor_id_sensor_fk</name>
+		<name>Sensor_Reading_id_sensor_fk</name>
 		<startTableId>3</startTableId>
 		<endTableId>2</endTableId>
 		<endFieldId>0</endFieldId>
@@ -321,7 +321,7 @@
 		<id>2</id>
 	</relationships>
 	<relationships>
-		<name>Ajuste_Aplicacao_id_cultura_fk</name>
+		<name>Application_Adjustment_id_crop_fk</name>
 		<startTableId>4</startTableId>
 		<endTableId>1</endTableId>
 		<endFieldId>0</endFieldId>

@@ -1,0 +1,359 @@
+{
+  "tables": [
+    {
+      "name": "Producer",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id_producer",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 100,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "location",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 255,
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "registration_date",
+          "type": "DATE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 3
+        }
+      ],
+      "indices": [],
+      "id": 0,
+      "x": -529.8788729443361,
+      "y": 627.5800894755862
+    },
+    {
+      "name": "Crop",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id_crop",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 100,
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "size": 100,
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "id_producer",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 3
+        }
+      ],
+      "indices": [],
+      "id": 1,
+      "x": 132.1164355478515,
+      "y": 666.4787584726564
+    },
+    {
+      "name": "Sensor",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id_sensor",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "sensor_type",
+          "type": "ENUM",
+          "values": [
+            "humidity",
+            "pH",
+            "nutrients"
+          ],
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "id_crop",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 2
+        }
+      ],
+      "indices": [],
+      "id": 2,
+      "x": 506.16268164062507,
+      "y": 472.3403792968751
+    },
+    {
+      "name": "Sensor_Reading",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id_reading",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "id_sensor",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "reading_value",
+          "type": "DOUBLE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "reading_date",
+          "type": "TIMESTAMP",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "id": 3
+        }
+      ],
+      "indices": [],
+      "id": 3,
+      "x": 170.79973203125002,
+      "y": 309.71633515625
+    },
+    {
+      "name": "Application_Adjustment",
+      "comment": "",
+      "color": "#175e7a",
+      "fields": [
+        {
+          "name": "id_adjustment",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": true,
+          "notNull": false,
+          "primary": true,
+          "default": "",
+          "check": "",
+          "id": 0
+        },
+        {
+          "name": "water_quantity",
+          "type": "DOUBLE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 1
+        },
+        {
+          "name": "nutrient_quantity",
+          "type": "DOUBLE",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 2
+        },
+        {
+          "name": "adjustment_date",
+          "type": "TIMESTAMP",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": false,
+          "primary": false,
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "id": 3
+        },
+        {
+          "name": "id_crop",
+          "type": "INT",
+          "comment": "",
+          "unique": false,
+          "increment": false,
+          "notNull": true,
+          "primary": false,
+          "default": "",
+          "check": "",
+          "id": 4
+        }
+      ],
+      "indices": [],
+      "id": 4,
+      "x": -322.1839905468753,
+      "y": 261.67231108789076
+    }
+  ],
+  "relationships": [
+    {
+      "name": "Crop_id_producer_fk",
+      "startTableId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "startFieldId": 3,
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "cardinality": "many_to_one",
+      "id": 0
+    },
+    {
+      "name": "Sensor_id_crop_fk",
+      "startTableId": 2,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "startFieldId": 2,
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "cardinality": "many_to_one",
+      "id": 1
+    },
+    {
+      "name": "Sensor_Reading_id_sensor_fk",
+      "startTableId": 3,
+      "endTableId": 2,
+      "endFieldId": 0,
+      "startFieldId": 1,
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "cardinality": "many_to_one",
+      "id": 2
+    },
+    {
+      "name": "Application_Adjustment_id_crop_fk",
+      "startTableId": 4,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "startFieldId": 4,
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "cardinality": "many_to_one",
+      "id": 3
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "database": "generic",
+  "types": [],
+  "title": "FarmTech Sensors"
+}
