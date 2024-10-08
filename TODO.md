@@ -12,8 +12,8 @@
        - [x] Date and time of water application.
        - [x] Quantity of water applied.
      - pH level monitoring:
-       - [ ] Date and time of pH readings.
-       - [ ] Recorded pH values.
+       - [x] Date and time of pH readings.
+       - [x] Recorded pH values.
   
 2. **Create Entity-Relationship Model (MER)**
    - [x] **Define Entities and Attributes**:
